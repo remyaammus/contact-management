@@ -1,0 +1,1 @@
+1. [Build a CRUD Web App With Python and Flask - 1](https://scotch.io/tutorials/build-a-crud-web-app-with-python-and-flask-part-one)
