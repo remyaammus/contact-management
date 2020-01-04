@@ -14,7 +14,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_ECHO = True
     SECRET_KEY = 'v#l70zX7ggfEsW!'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:password@localhost:5432/fullcontactapp'
 
 
 class ProductionConfig(Config):
