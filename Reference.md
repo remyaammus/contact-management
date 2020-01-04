@@ -2,3 +2,4 @@
 2. [Foo](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database)
 3. [Flask SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/queries/)
 4. [forms](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms)
+5. [set default value in forms](https://stackoverflow.com/questions/36157362/setting-default-value-after-initialization-in-selectfield-flask-wtforms)
