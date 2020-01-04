@@ -17,15 +17,11 @@ def create_app_contact_app(config_name):
     manager = Manager(app)
     manager.add_command('db', MigrateCommand)
 
-    from contact_app import models
+    from contact_app.models import Contact
 
     @app.route('/')
     def contact_list_view():
-        from contact_app.models import Contact
         all_contacts = Contact.query.all()
-        for cont in all_contacts:
-            print(cont.email)
-        print(all_contacts)
         return render_template('contact_list.html', all_contacts=all_contacts)
         #
         # from random import randint
@@ -33,5 +29,10 @@ def create_app_contact_app(config_name):
         # db.session.add(admin)
         # db.session.commit()
         # return 'Hello, World!'
+
+    @app.route('/<contact_id>')
+    def contact_detail_view(contact_id):
+        contact = Contact.query.filter_by(id=contact_id).first()
+        return render_template('contact_details.html', contact=contact)
 
     return app
