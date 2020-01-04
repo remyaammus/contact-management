@@ -35,4 +35,14 @@ def create_app_contact_app(config_name):
         contact = Contact.query.filter_by(id=contact_id).first()
         return render_template('contact_details.html', contact=contact)
 
+    @app.route('/add/<contact_id>')
+    def contact_create_view(contact_id):
+        contact = Contact.query.filter_by(id=contact_id).first()  # checks already exists entry
+        if contact:
+            return "Contact with id {} already existing".format(contact_id)
+        else:
+            from contact_app.forms import ContactCreateForm
+            form = ContactCreateForm()
+            return render_template('contact_add.html', form=form)
+
     return app

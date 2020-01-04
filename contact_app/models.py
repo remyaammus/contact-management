@@ -12,7 +12,7 @@ class Contact(db.Model):
     email = db.Column(db.String(60), index=True, unique=True)
     first_name = db.Column(db.String(60), index=True)
     last_name = db.Column(db.String(60), index=True)
-    phone_number = db.Column(db.Integer(), unique=True)
+    phone_number = db.Column(db.String(10), unique=True)
 
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name)
