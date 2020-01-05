@@ -1,4 +1,4 @@
-def get_db_uri_from_env():
+def get_mysql_db_uri_from_env():
     import os
     user = os.environ.get('MYSQL_USER', 'root')
     password = os.environ.get('MYSQL_PASSWORD', 'password')
@@ -20,6 +20,7 @@ class Config(object):
     """
 
     # Put any configurations here that are common across all environments
+    SQLALCHEMY_DATABASE_URI = get_mysql_db_uri_from_env()
 
 
 class DevelopmentConfig(Config):
@@ -30,7 +31,6 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_ECHO = True
     SECRET_KEY = 'v#l70zX7ggfEsW!'
-    SQLALCHEMY_DATABASE_URI = get_db_uri_from_env()
 
 
 class ProductionConfig(Config):
