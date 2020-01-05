@@ -24,5 +24,5 @@ Simple Contact Management app
 		5. `MYSQL_DB_NAME` (`my_simple_db`) 
 8. `export FLASK_APP='run.py' `
 9. migrate the database
-	10. `flask db upgrade` 
+10. `flask db upgrade` 
 10.  run the app `flask run`
