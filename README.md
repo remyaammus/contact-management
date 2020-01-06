@@ -26,3 +26,10 @@ Simple Contact Management app
 9. migrate the database
 10. `flask db upgrade` 
 10.  run the app `flask run`
+
+## end-points
+1. `/` : List all contacts in db
+3. `/<contact_id>` : Details of a specific contact
+2. `/add/<contact_id>` : Create new contact with *id=<contact_id>*
+4. `/delete/<contact_id>` : Delete specific contact from db
+5. `/search/<search_term>` : Search against db entries (db lookup will be against `first_name`, `last_name` and `email` fields)
