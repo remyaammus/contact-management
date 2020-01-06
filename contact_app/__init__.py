@@ -56,7 +56,13 @@ def create_app_contact_app(config_name):
 
     @app.route('/search/<string:contact_name>')
     def contact_search_view(contact_name):
-        contacts = Contact.query.filter(Contact.first_name.contains(contact_name))
+        from sqlalchemy import or_
+        or_filters = [
+            Contact.first_name.contains(contact_name),
+            Contact.last_name.contains(contact_name),
+            Contact.email.contains(contact_name)
+        ]
+        contacts = Contact.query.filter(or_(*or_filters))
         return render_template('contact_search.html', all_contacts=contacts)
 
     return app
