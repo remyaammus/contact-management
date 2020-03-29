@@ -21,6 +21,13 @@
             margin: 0px auto;
         }
 
+        .delete-btn {
+            background-color: red; /* Green */
+            color: white;
+            text-align: center;
+            display: inline-block;
+        }
+
 
     </style>
 </head>
@@ -52,7 +59,7 @@
                 <td>{{ contact.website }}</td>
                 <td>{{ contact.location }}</td>
                 <td>
-                    <button type="submit">Delete Contact ({{ contact.id }})</button>
+                    <button class="delete-btn" type="submit">Delete</button>
                 </td>
             </tr>
         </form>
