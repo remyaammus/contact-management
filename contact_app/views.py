@@ -9,12 +9,12 @@ def load_contact_views(app, db):
     @app.route('/')
     def contact_list_view():
         all_contacts = Contact.query.all()
-        return render_template('contact_list.html', all_contacts=all_contacts)
+        return render_template('contact_app/contact_list.html', all_contacts=all_contacts)
 
     @app.route('/<int:contact_id>')
     def contact_detail_view(contact_id):
         contact = Contact.query.filter_by(id=contact_id).first()
-        return render_template('contact_details.html', contact=contact)
+        return render_template('contact_app/contact_details.html', contact=contact)
 
     @app.route('/add/<int:contact_id>', methods=['GET', 'POST'])
     def contact_create_view(contact_id):
@@ -35,7 +35,7 @@ def load_contact_views(app, db):
                 db.session.add(contact)
                 db.session.commit()
                 return redirect('/')
-            return render_template('contact_add.html', form=form, contact_id=contact_id)
+            return render_template('contact_app/contact_add.html', form=form, contact_id=contact_id)
 
     @app.route('/delete/<int:contact_id>', methods=['POST'])
     def contact_delete_view(contact_id):
@@ -52,4 +52,4 @@ def load_contact_views(app, db):
             Contact.email.contains(contact_name)
         ]
         contacts = Contact.query.filter(or_(*or_filters))
-        return render_template('contact_search.html', all_contacts=contacts)
+        return render_template('contact_app/contact_search.html', all_contacts=contacts)
