@@ -22,7 +22,14 @@
         }
 
         .delete-btn {
-            background-color: red; /* Green */
+            background-color: red;
+            color: white;
+            text-align: center;
+            display: inline-block;
+        }
+
+        a.button {
+            background-color: green;
             color: white;
             text-align: center;
             display: inline-block;
@@ -50,7 +57,7 @@
         <form action="{{ url_for('contact_delete_view', contact_id=contact.id) }}" method=post class=delete-contact>
             <tr>
                 <td>{{ contact.id }}</td>
-                <td>{{ contact.first_name }}</td>
+                <td><a href="{{ url_for('contact_detail_view', contact_id=contact.id) }}">{{ contact.first_name }}</a></td>
                 <td>{{ contact.last_name }}</td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phone_number }}</td>
@@ -64,8 +71,7 @@
             </tr>
         </form>
     {% endfor %}
-
-
+    <a href="/add/" class="button">Add Contact</a>
 </table>
 </body>
 </html>
