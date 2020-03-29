@@ -19,6 +19,7 @@ def create_app_contact_app(config_name):
 
     from contact_app.models import Contact
     from contact_app.forms import ContactCreateForm
+    from contact_app.functions import enrich_details
 
     @app.route('/')
     def contact_list_view():
@@ -39,10 +40,13 @@ def create_app_contact_app(config_name):
             form = ContactCreateForm()
             form.id.default = contact_id
             if form.validate_on_submit():
+                extra_info = enrich_details(email=form.data['email'])
                 contact = Contact(
                     id=contact_id, email=form.data['email'],
                     first_name=form.data['first_name'], last_name=form.data['last_name'],
-                    phone_number=form.data['phone_number'])
+                    phone_number=form.data['phone_number'],
+                    **extra_info
+                )
                 db.session.add(contact)
                 db.session.commit()
                 return redirect('/')
