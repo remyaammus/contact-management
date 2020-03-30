@@ -23,6 +23,7 @@ Simple Contact Management app
 		4. `MYSQL_PORT` (`5432`)
 		5. `MYSQL_DB_NAME` (`my_simple_db`) 
 8. `export FLASK_APP='run.py' `
+9. `export FULLCONTACT_API_KEY=YOUR_API_KEY`
 9. migrate the database
 10. `flask db upgrade` 
 10.  run the app `flask run`
