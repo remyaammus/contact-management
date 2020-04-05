@@ -1,19 +1,6 @@
 import os
 
-
-def get_mysql_db_uri_from_env():
-    user = os.environ.get('MYSQL_USER', 'root')
-    password = os.environ.get('MYSQL_PASSWORD', 'password')
-    host = os.environ.get('MYSQL_HOST', 'localhost')
-    port = os.environ.get('MYSQL_PORT', '5432')
-    db_name = os.environ.get('MYSQL_DB_NAME', 'my_simple_db')
-    return 'mysql://{user}:{password}@{host}:{port}/{db_name}'.format(
-        user=user,
-        password=password,
-        host=host,
-        port=port,
-        db_name=db_name
-    )
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 class Config(object):
@@ -22,7 +9,7 @@ class Config(object):
     """
 
     # Put any configurations here that are common across all environments
-    SQLALCHEMY_DATABASE_URI = get_mysql_db_uri_from_env()
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////{base_dir}/contact.db'.format(base_dir=BASE_DIR)
     FULLCONTACT_API_KEY = os.environ.get('FULLCONTACT_API_KEY', 'None')
 
 
